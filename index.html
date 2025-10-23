@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>V2RayTun VPN - Официальный сайт</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: #000;
+            color: #f5f5f7;
+            line-height: 1.47059;
+            font-weight: 400;
+            letter-spacing: -0.022em;
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: saturate(180%) blur(20px);
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .nav-content {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 22px;
+            height: 44px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            font-size: 21px;
+            font-weight: 600;
+            color: #f5f5f7;
+            text-decoration: none;
+            letter-spacing: 0.011em;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: #f5f5f7;
+            text-decoration: none;
+            font-size: 12px;
+            opacity: 0.8;
+            transition: opacity 0.3s;
+        }
+
+        .nav-links a:hover {
+            opacity: 1;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 140px 0 100px;
+            text-align: center;
+            position: relative;
+        }
+
+        .hero-content {
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 0 22px;
+        }
+
+        .hero h1 {
+            font-size: 80px;
+            line-height: 1.05;
+            font-weight: 700;
+            letter-spacing: -0.015em;
+            margin-bottom: 10px;
+            background: linear-gradient(90deg, #fff 0%, #999 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-subtitle {
+            font-size: 28px;
+            line-height: 1.14286;
+            font-weight: 400;
+            letter-spacing: 0.007em;
+            color: #a1a1a6;
+            margin-bottom: 30px;
+        }
+
+        .hero-description {
+            font-size: 21px;
+            line-height: 1.381;
+            font-weight: 400;
+            letter-spacing: 0.011em;
+            color: #86868b;
+            margin-bottom: 50px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* CTA Buttons */
+        .cta-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            margin-top: 30px;
+        }
+
+        .btn {
+            padding: 12px 22px;
+            font-size: 17px;
+            border-radius: 980px;
+            text-decoration: none;
+            transition: all 0.3s;
+            display: inline-block;
+            font-weight: 400;
+        }
+
+        .btn-primary {
+            background: #0071e3;
+            color: #fff;
+        }
+
+        .btn-primary:hover {
+            background: #0077ED;
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: #2997ff;
+            border: 1px solid #2997ff;
+        }
+
+        .btn-secondary:hover {
+            background: #2997ff;
+            color: #fff;
+        }
+
+        /* Section */
+        section {
+            padding: 100px 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .section-content {
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 0 22px;
+        }
+
+        .section-title {
+            font-size: 48px;
+            line-height: 1.08349;
+            font-weight: 700;
+            letter-spacing: -0.003em;
+            text-align: center;
+            margin-bottom: 80px;
+        }
+
+        /* Steps */
+        .steps {
+            display: grid;
+            gap: 60px;
+        }
+
+        .step {
+            display: grid;
+            grid-template-columns: 80px 1fr;
+            gap: 40px;
+            align-items: start;
+        }
+
+        .step-number {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #0071e3 0%, #2997ff 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 36px;
+            font-weight: 700;
+            color: #fff;
+        }
+
+        .step-content h3 {
+            font-size: 32px;
+            line-height: 1.125;
+            font-weight: 700;
+            letter-spacing: 0.004em;
+            margin-bottom: 16px;
+        }
+
+        .step-content p {
+            font-size: 21px;
+            line-height: 1.381;
+            font-weight: 400;
+            letter-spacing: 0.011em;
+            color: #a1a1a6;
+        }
+
+        .download-options {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        /* Features Grid */
+        .features {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 40px;
+            margin-top: 60px;
+        }
+
+        .feature {
+            padding: 40px;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 18px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s;
+        }
+
+        .feature:hover {
+            background: rgba(255, 255, 255, 0.05);
+            border-color: rgba(255, 255, 255, 0.2);
+            transform: translateY(-4px);
+        }
+
+        .feature-icon {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+
+        .feature h3 {
+            font-size: 24px;
+            line-height: 1.16667;
+            font-weight: 700;
+            letter-spacing: 0.009em;
+            margin-bottom: 12px;
+        }
+
+        .feature p {
+            font-size: 17px;
+            line-height: 1.47059;
+            font-weight: 400;
+            letter-spacing: -0.022em;
+            color: #a1a1a6;
+        }
+
+        /* FAQ */
+        .faq-list {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 30px 0;
+        }
+
+        .faq-item:last-child {
+            border-bottom: none;
+        }
+
+        .faq-question {
+            font-size: 24px;
+            line-height: 1.16667;
+            font-weight: 700;
+            letter-spacing: 0.009em;
+            margin-bottom: 12px;
+            color: #f5f5f7;
+        }
+
+        .faq-answer {
+            font-size: 17px;
+            line-height: 1.47059;
+            font-weight: 400;
+            letter-spacing: -0.022em;
+            color: #a1a1a6;
+        }
+
+        .faq-answer a {
+            color: #2997ff;
+            text-decoration: none;
+        }
+
+        .faq-answer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Warning Box */
+        .warning-box {
+            background: rgba(255, 149, 0, 0.1);
+            border: 1px solid rgba(255, 149, 0, 0.3);
+            border-radius: 18px;
+            padding: 24px 30px;
+            margin: 40px 0;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .warning-icon {
+            font-size: 28px;
+            flex-shrink: 0;
+        }
+
+        .warning-box p {
+            font-size: 17px;
+            line-height: 1.47059;
+            font-weight: 400;
+            letter-spacing: -0.022em;
+            color: #f5f5f7;
+        }
+
+        /* Footer */
+        footer {
+            padding: 80px 0 40px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            background: #000;
+        }
+
+        .footer-content {
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 0 22px;
+            text-align: center;
+        }
+
+        footer p {
+            font-size: 12px;
+            line-height: 1.33337;
+            font-weight: 400;
+            letter-spacing: -0.01em;
+            color: #6e6e73;
+            margin-bottom: 8px;
+        }
+
+        /* Responsive */
+        @media (max-width: 1068px) {
+            .hero h1 {
+                font-size: 64px;
+            }
+
+            .hero-subtitle {
+                font-size: 24px;
+            }
+
+            .section-title {
+                font-size: 40px;
+            }
+
+            .features {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 734px) {
+            .hero h1 {
+                font-size: 48px;
+            }
+
+            .hero-subtitle {
+                font-size: 21px;
+            }
+
+            .hero-description {
+                font-size: 17px;
+            }
+
+            .section-title {
+                font-size: 32px;
+            }
+
+            .step {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .step-number {
+                width: 60px;
+                height: 60px;
+                font-size: 28px;
+            }
+
+            .step-content h3 {
+                font-size: 24px;
+            }
+
+            .step-content p {
+                font-size: 17px;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                width: 100%;
+            }
+
+            .btn {
+                width: 100%;
+            }
+
+            .download-options {
+                flex-direction: column;
+            }
+
+            .nav-links {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-content">
+            <a href="#" class="logo">V2RayTun</a>
+            <ul class="nav-links">
+                <li><a href="#how-to">Начать</a></li>
+                <li><a href="#features">Преимущества</a></li>
+                <li><a href="#faq">FAQ</a></li>
+                <li><a href="#support">Поддержка</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>V2RayTun VPN</h1>
+            <p class="hero-subtitle">Мобильное приложение №1 на базе Xray</p>
+            <p class="hero-description">
+                Удобная настройка и управление прокси-серверами на основе гибких правил маршрутизации. Работает с <a href="https://t.me/VangVPN_bot" target="_blank" style="color: #2997ff; text-decoration: none;">VangVPN</a>. Не собирает пользовательские данные.
+            </p>
+            <div class="cta-buttons">
+                <a href="https://t.me/VangVPN_bot" target="_blank" class="btn btn-primary">Получить бесплатный ключ</a>
+                <a href="https://t.me/VangVPN_Support" target="_blank" class="btn btn-secondary">Поддержка</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- How To Section -->
+    <section id="how-to">
+        <div class="section-content">
+            <h2 class="section-title">Как начать пользоваться</h2>
+            
+            <div class="steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h3>Установите приложение</h3>
+                        <p>Установите программу V2RayTun из магазина приложений или напрямую</p>
+                        <div class="download-options">
+                            <a href="#" class="btn btn-primary">App Store</a>
+                            <a href="#" class="btn btn-primary">Google Play</a>
+                            <a href="#" class="btn btn-secondary">Прямая загрузка</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h3>Получите ключ</h3>
+                        <p>Перейдите в telegram бота VangVPN, чтобы получить ключ из раздела "🔑 Подключиться" и скопируйте его</p>
+                        <div class="download-options">
+                            <a href="https://t.me/VangVPN_bot" target="_blank" class="btn btn-primary">Получить бесплатный ключ</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h3>Подключитесь</h3>
+                        <p>Откройте приложение V2RayTun. Затем выберите «Из буфера». Готово — осталось только выбрать страну и нажать кнопку "Подключиться"</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="warning-box">
+                <span class="warning-icon">⚠️</span>
+                <p>Если возникли вопросы - напишите в <a href="https://t.me/VangVPN_Support" target="_blank" style="color: #2997ff; text-decoration: none;">поддержку VangVPN</a></p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features">
+        <div class="section-content">
+            <h2 class="section-title">Преимущества V2RayTun VPN</h2>
+            
+            <div class="features">
+                <div class="feature">
+                    <div class="feature-icon">🚀</div>
+                    <h3>Современный протокол</h3>
+                    <p>Используем Xray для быстрого и безопасного соединения с автоматическим выбором оптимального маршрута</p>
+                </div>
+
+                <div class="feature">
+                    <div class="feature-icon">🔒</div>
+                    <h3>Полная приватность</h3>
+                    <p>Не собираем и не храним ваши данные. Полное шифрование трафика без логов активности</p>
+                </div>
+
+                <div class="feature">
+                    <div class="feature-icon">⚡</div>
+                    <h3>Высокая скорость</h3>
+                    <p>Оптимальная маршрутизация трафика обеспечивает максимальную скорость соединения</p>
+                </div>
+
+                <div class="feature">
+                    <div class="feature-icon">🌍</div>
+                    <h3>Много серверов</h3>
+                    <p>Выбирайте сервер в нужной стране. Поддержка iOS, Android, Windows, macOS и Android TV</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq">
+        <div class="section-content">
+            <h2 class="section-title">Часто задаваемые вопросы</h2>
+            
+            <div class="faq-list">
+                <div class="faq-item">
+                    <div class="faq-question">Как работает V2RayTun VPN?</div>
+                    <div class="faq-answer">
+                        V2RayTun VPN использует современный протокол Xray для обеспечения безопасного и быстрого соединения. Приложение автоматически выбирает оптимальный маршрут для вашего трафика, обеспечивая стабильное соединение.
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">Безопасен ли V2RayTun VPN?</div>
+                    <div class="faq-answer">
+                        Да, V2RayTun VPN обеспечивает полное шифрование вашего трафика и не хранит логи активности. Мы используем современные протоколы шифрования для максимальной защиты ваших данных.
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">На скольких устройствах можно использовать?</div>
+                    <div class="faq-answer">
+                        Вы можете использовать V2RayTun VPN на 3 устройствах одновременно по одной подписке. Поддерживаются все популярные платформы: iOS, Android, Windows, macOS и Android TV.
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">Какая скорость соединения?</div>
+                    <div class="faq-answer">
+                        Скорость соединения зависит от вашего интернет-провайдера и выбранного сервера. V2RayTun VPN оптимизирован для обеспечения максимальной скорости при сохранении безопасности соединения.
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">Что делать если не работает?</div>
+                    <div class="faq-answer">
+                        Если у вас возникли проблемы с соединением, попробуйте следующие шаги: 1) Перезапустите приложение, 2) Проверьте подключение к интернету, 3) Выберите другой сервер, 4) Обратитесь в <a href="https://t.me/VangVPN_Support" target="_blank">поддержку</a> через телеграм VangVPN Support.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="support">
+        <div class="footer-content">
+            <p>© 2024 V2RayTun VPN. Все права защищены.</p>
+            <p>Современный VPN на базе Xray протокола</p>
+        </div>
+    </footer>
+</body>
+</html>
