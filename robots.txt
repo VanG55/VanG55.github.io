@@ -1,0 +1,9 @@
+
+User-agent: *
+Allow: /
+
+# Sitemap для основного домена
+Sitemap: https://v2ray-tun.su/sitemap.xml
+
+
+
